@@ -17,6 +17,13 @@
                 "en-US"
             ],
             "name": "sun.awt.resources.awt"
+        },
+        {
+            "locales": [
+                "en", 
+                "en-US"
+            ],
+            "name": "org.apache.xerces.impl.msg.XMLMessages"
         }
     ],
     "jni": [
