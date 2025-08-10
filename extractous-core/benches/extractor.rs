@@ -10,7 +10,7 @@ fn extract_to_stream(c: &mut Criterion) {
     c.bench_function("extract_to_stream", |b| {
         b.iter(|| {
             // Extract the provided file content to a stream
-            let stream = extractor.extract_file(file_path).unwrap();
+            let (stream, _) = extractor.extract_file(file_path).unwrap();
             // Because stream implements std::io::Read trait we can perform buffered reading
             // For example we can use it to create a BufReader
             let mut reader = BufReader::new(stream);

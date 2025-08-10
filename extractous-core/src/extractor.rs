@@ -202,7 +202,6 @@ impl Extractor {
             self.xml_output,
         )
     }
-
 }
 
 #[cfg(test)]

@@ -18,7 +18,7 @@ pub(crate) fn vm() -> &'static JavaVM {
     GRAAL_VM.get_or_init(create_vm_isolate)
 }
 
-fn get_vm_attach_current_thread<'local>() -> ExtractResult<AttachGuard<'local>> {
+fn get_vm_attach_current_thread() -> ExtractResult<AttachGuard<'static>> {
     // Attaching a thead that is already attached is a no-op. Good to have this in case this method
     // is called from another thread
     let env = vm().attach_current_thread()?;
@@ -26,7 +26,7 @@ fn get_vm_attach_current_thread<'local>() -> ExtractResult<AttachGuard<'local>> 
 }
 
 fn parse_to_stream(
-    mut env: AttachGuard,
+    mut env: AttachGuard<'static>,
     data_source_val: JValue,
     char_set: &CharSet,
     pdf_conf: &PdfParserConfig,
@@ -60,7 +60,7 @@ fn parse_to_stream(
 
     // Create and process the JReaderResult
     let result = JReaderResult::new(&mut env, call_result_obj)?;
-    let j_reader = JReaderInputStream::new(&mut env, result.java_reader)?;
+    let j_reader = JReaderInputStream::new(env, result.java_reader)?;
 
     Ok((StreamReader { inner: j_reader }, result.metadata))
 }
@@ -71,7 +71,7 @@ pub fn parse_file(
     pdf_conf: &PdfParserConfig,
     office_conf: &OfficeParserConfig,
     ocr_conf: &TesseractOcrConfig,
-    as_xml: bool
+    as_xml: bool,
 ) -> ExtractResult<(StreamReader, Metadata)> {
     let mut env = get_vm_attach_current_thread()?;
 

@@ -8,31 +8,31 @@ use crate::{Metadata, OfficeParserConfig, PdfParserConfig, TesseractOcrConfig, D
 use bytemuck::cast_slice_mut;
 use jni::objects::{GlobalRef, JByteArray, JObject, JValue};
 use jni::sys::jsize;
-use jni::JNIEnv;
+use jni::{AttachGuard, JNIEnv};
 
 /// Wrapper for [`JObject`]s that contain `org.apache.commons.io.input.ReaderInputStream`
 /// It saves a GlobalRef to the java object, which is cleared when the last GlobalRef is dropped
 /// Implements [`Drop] trait to properly close the `org.apache.commons.io.input.ReaderInputStream`
-#[derive(Clone)]
 pub struct JReaderInputStream {
     internal: GlobalRef,
     buffer: GlobalRef,
     capacity: jsize,
+    #[cfg(feature = "stream-attachguard")]
+    _guard: AttachGuard<'static>,
 }
 
 impl JReaderInputStream {
-    pub(crate) fn new<'local>(
-        env: &mut JNIEnv<'local>,
-        obj: JObject<'local>,
-    ) -> ExtractResult<Self> {
+    pub(crate) fn new(guard: AttachGuard<'static>, obj: JObject<'_>) -> ExtractResult<Self> {
         // Creates new jbyte array
         let capacity = DEFAULT_BUF_SIZE as jsize;
-        let jbyte_array = env.new_byte_array(capacity)?;
+        let jbyte_array = guard.new_byte_array(capacity)?;
 
         Ok(Self {
-            internal: env.new_global_ref(obj)?,
-            buffer: env.new_global_ref(jbyte_array)?,
+            internal: guard.new_global_ref(obj)?,
+            buffer: guard.new_global_ref(jbyte_array)?,
             capacity,
+            #[cfg(feature = "stream-attachguard")]
+            _guard: guard,
         })
     }
 

@@ -16,6 +16,9 @@ readme = "README.md"
 keywords = ["unstructured", "tika", "text", "pdf", "parser"]
 categories = ["parsing", "text-processing"]
 
+[features]
+stream-attachguard = []
+
 [[bench]]
 name = "extractor"
 harness = false
@@ -23,9 +26,9 @@ required-features = []
 
 [dependencies]
 libc = { version = "0.2.158" }
-jni = { version = "0.21.1",features = ["invocation"] }
+jni = { version = "0.21.1", features = ["invocation"] }
 thiserror = { version = "1.0.63" }
-bytemuck =  { version = "1.17.1"}
+bytemuck = { version = "1.17.1" }
 # String enums
 strum = { version = "0.26.2" }
 strum_macros = { version = "0.26.2" }
