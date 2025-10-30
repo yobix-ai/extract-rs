@@ -77,7 +77,10 @@ public class ParsingReader extends Reader {
 
         public void run() {
             try {
-                ContentHandler handler = outputXml ? new ToXMLContentHandler(pipedOutputStream, encoding) : new BodyContentHandler(pipedOutputStream);
+                // Tika 3.x API change: BodyContentHandler now takes Writer, not OutputStream
+                ContentHandler handler = outputXml
+                    ? new ToXMLContentHandler(pipedOutputStream, encoding)
+                    : new BodyContentHandler(new OutputStreamWriter(pipedOutputStream, encoding));
                 parser.parse(stream, handler, metadata, context);
             } catch (Throwable t) {
                 throwable = t;
