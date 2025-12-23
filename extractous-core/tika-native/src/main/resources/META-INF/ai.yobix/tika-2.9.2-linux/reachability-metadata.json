@@ -10,6 +10,12 @@
             "locales": [
                 "en-US"
             ],
+            "name": "org.apache.xerces.impl.msg.XMLMessages"
+        },
+        {
+            "locales": [
+                "en-US"
+            ],
             "name": "org.apache.xmlbeans.impl.regex.message"
         },
         {
@@ -2614,6 +2620,30 @@
                 }
             ],
             "type": "org.apache.tika.parser.pdf.xmpschemas.XMPSchemaPDFX"
+        },
+        {
+            "methods": [
+                {
+                    "name": "<init>",
+                    "parameterTypes": [
+                        "org.w3c.dom.Element",
+                        "java.lang.String"
+                    ]
+                }
+            ],
+            "type": "org.apache.tika.parser.pdf.xmpschemas.XMPSchemaPDFUA"
+        },
+        {
+            "methods": [
+                {
+                    "name": "<init>",
+                    "parameterTypes": [
+                        "org.w3c.dom.Element",
+                        "java.lang.String"
+                    ]
+                }
+            ],
+            "type": "org.apache.jempbox.xmp.pdfa.XMPSchemaPDFAId"
         },
         {
             "methods": [
@@ -5317,10 +5347,16 @@
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cmauthorlst86abdoctype.xsb"
         },
         {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/comments3da0doctype.xsb"
+        },
+        {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctabstractnum588etype.xsb"
         },
         {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctanchorclientdata02betype.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctanchorff8atype.xsb"
         },
         {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctapplicationnonvisualdrawingprops2fb6type.xsb"
@@ -5390,6 +5426,9 @@
         },
         {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctendnotescee2type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctffdataaa7etype.xsb"
         },
         {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctfill550ctype.xsb"
@@ -5470,6 +5509,9 @@
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctmarkuprangeba3dtype.xsb"
         },
         {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctmarkup2d80type.xsb"
+        },
+        {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctnonvisualdrawingprops8fb0type.xsb"
         },
         {
@@ -5503,7 +5545,16 @@
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctnumpr16aatype.xsb"
         },
         {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctobject47c9type.xsb"
+        },
+        {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctofficestylesheetce25type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctomath6725type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctomathpara8825type.xsb"
         },
         {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctonoff04c2type.xsb"
@@ -5581,6 +5632,15 @@
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctrsta472type.xsb"
         },
         {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctruntrackchangea458type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctsdtblock221etype.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctsdtrun5c60type.xsb"
+        },
+        {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/ctsectpr1123type.xsb"
         },
         {
@@ -5656,6 +5716,9 @@
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttblc014type.xsb"
         },
         {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttblprex863ftype.xsb"
+        },
+        {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttc4019type.xsb"
         },
         {
@@ -5681,6 +5744,9 @@
         },
         {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttextparagraphpropertiesdd05type.xsb"
+        },
+        {
+            "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttrackchangec317type.xsb"
         },
         {
             "glob": "org/apache/poi/schemas/ooxml/system/ooxml/cttrpr2848type.xsb"
