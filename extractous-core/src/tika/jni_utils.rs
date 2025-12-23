@@ -162,15 +162,15 @@ pub fn jni_check_exception(env: &mut JNIEnv) -> ExtractResult<bool> {
 /// linked in by the build script.
 pub fn create_vm_isolate() -> JavaVM {
     unsafe {
-        let vm_options: Vec<sys::JavaVMOption> = vec![
+        let mut vm_options = [
             // Set java.library.path to be able to load libawt.so, which must be in the same dir as libtika_native.so
             sys::JavaVMOption {
-                optionString: "-Djava.library.path=.".as_ptr() as *mut c_char,
+                optionString: c"-Djava.library.path=.".as_ptr() as *mut c_char,
                 extraInfo: std::ptr::null_mut(),
             },
             // enable awt headless mode
             sys::JavaVMOption {
-                optionString: "Djava.awt.headless=true".as_ptr() as *mut c_char,
+                optionString: c"-Djava.awt.headless=true".as_ptr() as *mut c_char,
                 extraInfo: std::ptr::null_mut(),
             },
         ];
@@ -178,7 +178,7 @@ pub fn create_vm_isolate() -> JavaVM {
         let mut args = sys::JavaVMInitArgs {
             version: sys::JNI_VERSION_1_8,
             nOptions: vm_options.len() as sys::jint,
-            options: vm_options.as_ptr() as *mut sys::JavaVMOption,
+            options: vm_options.as_mut_ptr(),
             ignoreUnrecognized: sys::JNI_TRUE,
         };
         let mut ptr: *mut sys::JavaVM = std::ptr::null_mut();
