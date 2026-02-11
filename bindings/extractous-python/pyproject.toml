@@ -13,7 +13,7 @@ classifiers = [
 description = "Extractous Python Binding"
 license = { text = "Apache-2.0" }
 readme = "README.md"
-requires-python = ">=3.8,<3.14"
+requires-python = ">=3.8,<3.15"
 
 [project.optional-dependencies]
 # To generate python docs using pdoc we need to run:
